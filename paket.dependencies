@@ -1,0 +1,6 @@
+source https://www.nuget.org/api/v2
+source https://www.myget.org/F/test-paket/api/v2
+nuget FSharp.Core
+nuget FSharp.Net.Sdk
+nuget FAKE
+nuget Hello.World
