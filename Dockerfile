@@ -19,6 +19,7 @@ RUN apt-get update \
 COPY . ./
 # RUN dos2unix /app/build.sh \
 #     && /app/build.sh
+RUN nuget sources Add -Name pakettest -Source https://www.myget.org/F/test-paket/api/v2
 RUN mono .paket/paket.exe restore
 RUN dotnet restore
 RUN dotnet build
