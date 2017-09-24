@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.0-sdk AS build-env
+FROM microsoft/dotnet:1.1-sdk AS build-env
 WORKDIR /app
 
 # install mono
@@ -17,9 +17,11 @@ RUN apt-get update \
 
 # copy and build
 COPY . ./
-RUN dos2unix build.sh \
-    # && /app/build.sh
-
+# RUN dos2unix /app/build.sh \
+#     && /app/build.sh
+RUN mono .paket/paket.exe restore
+RUN dotnet restore
+RUN dotnet build
 # # build runtime image
 # FROM microsoft/dotnet:2.0-runtime 
 # WORKDIR /app
